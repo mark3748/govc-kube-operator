@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  govc-operator:
+    build: .
+    container_name: govc-operator
+    environment:
+      # vSphere connection
+      - GOVC_URL=https://administrator@vsphere.local:password@vcsa67.internal.mhamburger.net/sdk
+      - GOVC_INSECURE=1
+      - GOVC_DATACENTER=Datacenter
+      - GOVC_CLUSTER=Cluster
+      - GOVC_DATASTORE=iscsi-1tb
+      - GOVC_NETWORK=DPortGroup 10gb-1
+      - GOVC_FOLDER=K3s-Nodes
+      
+      # Operation mode
+      - OPERATION=daemon
+      - WATCH_NAMESPACE=default
+      - CHECK_INTERVAL=30
+      
+    volumes:
+      # Mount kubeconfig for Kubernetes access
+      - ${HOME}/.kube/config:/root/.kube/config:ro
+      
+    restart: unless-stopped
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "govc", "about"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
