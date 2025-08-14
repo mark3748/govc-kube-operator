@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   govc-operator:
-    build: .
+    image: ghcr.io/mark3748/govc-kube-operator:latest
+    # Alternatively, build locally:
+    # build: .
     container_name: govc-operator
     environment:
       # vSphere connection

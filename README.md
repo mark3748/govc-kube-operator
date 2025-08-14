@@ -12,8 +12,10 @@ A lightweight, production-ready Docker container for VMware vSphere VM operation
 
 ## 📦 Image Details
 
+- **Registry**: `ghcr.io/mark3748/govc-kube-operator`
 - **Base Image**: Alpine 3.19 (minimal, secure)
 - **Size**: ~71MB
+- **Architecture**: linux/amd64, linux/arm64
 - **Tools Included**:
   - govc 0.37.2 (VMware vSphere CLI)
   - kubectl 1.30.3 (Kubernetes CLI)
@@ -34,7 +36,16 @@ A lightweight, production-ready Docker container for VMware vSphere VM operation
 
 ## 🚀 Quick Start
 
-### Build the Image
+### Using Pre-built Image from GHCR
+```bash
+# Pull the latest image
+docker pull ghcr.io/mark3748/govc-kube-operator:latest
+
+# Or use a specific version
+docker pull ghcr.io/mark3748/govc-kube-operator:v1.0.0
+```
+
+### Build the Image Locally (Optional)
 ```bash
 docker build -t govc-kube-operator:latest .
 ```
@@ -49,7 +60,7 @@ docker run --rm \
   -e TEMPLATE_NAME=fedora-42-k3s-template \
   -e MEMORY_GB=8 \
   -e CPU_COUNT=4 \
-  govc-kube-operator:latest
+  ghcr.io/mark3748/govc-kube-operator:latest
 ```
 
 ### Docker Compose Deployment
