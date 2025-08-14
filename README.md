@@ -17,7 +17,7 @@ A lightweight, production-ready Docker container for VMware vSphere VM operation
 - **Size**: ~71MB
 - **Architecture**: linux/amd64, linux/arm64
 - **Tools Included**:
-  - govc 0.37.2 (VMware vSphere CLI)
+  - govc 0.51.0 (VMware vSphere CLI)
   - kubectl 1.30.3 (Kubernetes CLI)
   - jq, yq (JSON/YAML processing)
   - bash, curl, openssh-client
