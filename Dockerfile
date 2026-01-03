@@ -10,13 +10,13 @@ RUN apk add --no-cache \
     yq
 
 # Install kubectl
-ARG KUBECTL_VERSION=1.30.3
+ARG KUBECTL_VERSION=1.35.0
 RUN curl -LO "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/
 
 # Install govc
-ARG GOVC_VERSION=0.51.0
+ARG GOVC_VERSION=0.52.0
 RUN curl -L -o - "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSION}/govc_Linux_x86_64.tar.gz" | tar -C /usr/local/bin -xzf -
 
 # Create workspace
